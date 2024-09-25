@@ -36,3 +36,36 @@ export const signin = async (req, res, next) => {
         next(error);
     }
 };
+
+export const google = async (req, res, next) => {
+    try {
+        const { email } = req.body;
+        const user = await User.findOne({ email });
+
+        if (user) {
+            const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+            const userObject = user.toObject();
+            delete userObject.password;
+            res.cookie('access token:', token, { httpOnly: true }).status(200).json(userObject);
+        } else {
+            const generatePassword = Math.random().toString(36).slice(-8) + Math.random().toString(36).slice(-8);
+            const hashedPassword = bcryptjs.hashSync(generatePassword, 10);
+
+            const newUser = new User({
+                username: req.body.name.split("").join("").toLowerCase() + Math.random().toString(36).slice(-4),
+                email: req.body.email,
+                password: hashedPassword,
+                avatar: req.body.photo || "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png"
+            });
+
+            await newUser.save();
+
+            const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET);
+            const userObject = newUser.toObject();
+            delete userObject.password;
+            res.cookie('access token:', token, { httpOnly: true }).status(200).json(userObject);
+        }
+    } catch (error) {
+        next(error);
+    }
+};
