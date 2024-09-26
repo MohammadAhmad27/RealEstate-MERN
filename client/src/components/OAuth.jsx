@@ -18,7 +18,7 @@ export default function OAuth() {
             console.log(result);
             console.log("Google photo URL: ", result.user.photoURL);
 
-            const res = await fetch('api/auth/google', {
+            const res = await fetch('/api/auth/google', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
