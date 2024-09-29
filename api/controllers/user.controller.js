@@ -4,10 +4,6 @@ import { errorHandler } from '../utils/error.js';
 import Listing from '../models/listing.model.js'
 
 
-export const test = ((req, res) => {
-    res.send("API route is working!");
-});
-
 export const updateUser = async (req, res, next) => {
     if (req.user.id !== req.params.id) {
         return (
