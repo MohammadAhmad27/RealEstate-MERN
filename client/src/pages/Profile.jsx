@@ -137,9 +137,9 @@ export default function Profile() {
         <input type="text" id='username' placeholder='username' onChange={handleChange} defaultValue={currentUser.username} className='border p-3 rounded-lg' />
         <input type="email" id='email' placeholder='email' onChange={handleChange} defaultValue={currentUser.email} className='border p-3 rounded-lg' />
         <input type="password" id='password' placeholder='password' onChange={handleChange} className='border p-3 rounded-lg' />
-        <button disabled={loading} className='bg-slate-700 text-white p-3 rounded-lg hover:opacity-95 disabled:opacity-80'>{loading ? "loading..." : "Update"}</button>
+        <button disabled={loading} className='bg-slate-700 text-white p-3 rounded-lg w-full hover:opacity-95 disabled:opacity-80'>{loading ? "loading..." : "Update"}</button>
         <Link to={'/create-listing'}>
-          <button className='bg-green-700 text-white p-3 rounded-lg hover:opacity-95 disabled:opacity-80'>Create Listing</button>
+          <button className='bg-green-700 text-white p-3 rounded-lg w-full hover:opacity-95 disabled:opacity-80'>Create Listing</button>
         </Link>
       </form>
       <div className="flex justify-between mt-5">
