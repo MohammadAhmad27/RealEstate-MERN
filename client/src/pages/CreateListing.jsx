@@ -319,7 +319,7 @@ export default function CreateListing() {
                     <div className='flex gap-4'>
                         <input
                             onChange={(e) => setFiles(e.target.files)}
-                            className='p-3 border border-gray-300 rounded w-full'
+                            className='p-3 border border-gray-300 rounded-lg w-full'
                             type='file'
                             id='images'
                             accept='image/*'
@@ -329,7 +329,7 @@ export default function CreateListing() {
                             type='button'
                             disabled={uploading}
                             onClick={handleImageSubmit}
-                            className='p-3 text-green-700 border border-green-700 rounded uppercase hover:shadow-lg disabled:opacity-80'
+                            className='p-3 text-green-700 border border-green-700 rounded-lg uppercase hover:shadow-lg disabled:opacity-80'
                         >
                             {uploading ? 'Uploading...' : 'Upload'}
                         </button>
@@ -346,7 +346,7 @@ export default function CreateListing() {
                                 <img
                                     src={url}
                                     alt='listing image'
-                                    className='w-20 h-20 object-contain rounded-lg'
+                                    className='w-20 h-20 object-cover rounded-lg'
                                 />
                                 <button
                                     type='button'
