@@ -61,8 +61,11 @@ export default function Listing() {
             {listing.imageUrls.map((url) => (
               <SwiperSlide key={url}>
                 <div
-                  className="h-[500px] bg-center bg-cover bg-no-repeat"
-                  style={{ backgroundImage: `url(${url})` }}
+                  className='h-[550px]'
+                  style={{
+                    background: `url(${url}) center no-repeat`,
+                    backgroundSize: 'cover',
+                  }}
                 ></div>
               </SwiperSlide>
             ))}
@@ -85,7 +88,7 @@ export default function Listing() {
             </p>
           )}
           <div className='flex flex-col max-w-4xl mx-auto p-3 my-7 gap-4'>
-            <p className='text-2xl font-semibold flex flex-wrap'>
+            <p className='text-2xl font-semibold'>
               {listing.name} - ${' '}
               {listing.offer
                 ? listing.discountPrice.toLocaleString('en-US')
